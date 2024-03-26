@@ -11,6 +11,9 @@ import {
 import { auth } from '@src/main/config/auth';
 
 export default (router: Router): void => {
+  router.get('/', (req, res) => {
+    console.log('Server is live');
+  });
   router.post('/signup', adaptRoute(makeSignupController()));
   router.post('/signin', adaptRoute(makeSignInController()));
   router.get('/me', auth, adaptRoute(makeMeController()));

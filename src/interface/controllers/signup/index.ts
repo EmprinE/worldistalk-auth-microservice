@@ -9,12 +9,12 @@ const buildSignupController: BuildSignupController =
     if (error) {
       return badRequest(error);
     }
-    const { firstName, lastName, email, password } = httpRequest.body;
+    const { firstName, lastName, email, password, age, creator, profilePicture } = httpRequest.body;
     const account = await loadAccountByEmail(email);
     if (account) {
       return badRequest(new ContactInUseError());
     }
-    await addAccount({ firstName, lastName, email, password });
+    await addAccount({ firstName, lastName, email, password, age, creator, profilePicture });
     const accessToken = await authentication({ email, password });
     return created({ accessToken });
   };

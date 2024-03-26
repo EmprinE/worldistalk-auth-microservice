@@ -15,6 +15,7 @@ export const makeSignupValidation = (): Validation => {
     'email',
     'password',
     'passwordConfirmation',
+    'age'
   ];
   for (const field of requiredFields) {
     validations.push(requiredFieldValidation(field));

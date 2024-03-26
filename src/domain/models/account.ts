@@ -9,4 +9,7 @@ export type AccountModel = {
   forgotPasswordExpiresIn?: Date;
   createdAt?: Date;
   updatedAt?: Date;
+  age: number;
+  creator: boolean;
+  profilePicture: { binData: Buffer };
 };

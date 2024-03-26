@@ -8,6 +8,9 @@ export namespace AddAccount {
     lastName: string;
     email: string;
     password: string;
+    age: number;
+    creator: boolean;
+    profilePicture: { binData: Buffer };
   };
   export type Response = Promise<AccountModel>;
 }
