@@ -39,7 +39,7 @@ export const noContent = (): HttpResponse => ({
   statusCode: HttpStatusCode.noContent,
   header: {
     key: 'Set-Cookie',
-    value: `token=''; HttpOnly; Secure; SameSite=None; Path=/;`,
+    value: `token=; HttpOnly; Secure; SameSite=None; Path=/;`,
   },
 });
 
@@ -48,6 +48,6 @@ export const okCookie = (data: any): HttpResponse => ({
   statusCode: HttpStatusCode.ok,
   header: {
     key: 'Set-Cookie',
-    value: `token=${JSON.stringify(data)}; HttpOnly; Secure; SameSite=None; Path=/;`,
+    value: `token=${JSON.stringify(data.accessToken).slice(1,-1)}; HttpOnly; Secure; SameSite=None; Path=/;`,
   },
 });
