@@ -11,6 +11,10 @@ export enum HttpStatusCode {
 export type HttpResponse = {
   statusCode: HttpStatusCode;
   body?: any;
+  header?: {
+    key: string,
+    value: string,
+  },
 };
 
 export type HttpRequest = {

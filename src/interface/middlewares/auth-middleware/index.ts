@@ -4,11 +4,9 @@ import { BuildAuthMiddleWare } from './protocols';
 const buildAuthMiddleware: BuildAuthMiddleWare =
   ({ loadAccountByToken }) =>
   async (httpRequest) => {
-    const header =
-      httpRequest.headers?.['x-access-token'] ||
-      httpRequest.headers?.authorization;
+    const header = httpRequest.headers?.cookie;
     if (header) {
-      const accessToken = header.replace(/^Bearer\s+/, '');
+      const accessToken = JSON.parse(header.split('=')[1]).accessToken;
       const account = await loadAccountByToken(accessToken);
       if (account) {
         return ok({ accountId: account.id });

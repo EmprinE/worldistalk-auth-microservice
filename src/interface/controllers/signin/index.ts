@@ -1,4 +1,4 @@
-import { badRequest, ok, unauthorized, tryCatch } from '@src/interface/helpers';
+import { badRequest, unauthorized, tryCatch, okCookie } from '@src/interface/helpers';
 import { BuildSigninController } from './protocols';
 
 const buildSigninController: BuildSigninController =
@@ -13,7 +13,7 @@ const buildSigninController: BuildSigninController =
     if (!accessToken) {
       return unauthorized();
     }
-    return ok({ accessToken });
+    return okCookie({ accessToken });
   };
 
 export const signinController = tryCatch(buildSigninController);

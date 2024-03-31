@@ -37,4 +37,17 @@ export const notFoundError = (paramName: string): HttpResponse => ({
 
 export const noContent = (): HttpResponse => ({
   statusCode: HttpStatusCode.noContent,
+  header: {
+    key: 'Set-Cookie',
+    value: `token=''; HttpOnly; Secure; SameSite=None; Path=/;`,
+  },
+});
+
+
+export const okCookie = (data: any): HttpResponse => ({
+  statusCode: HttpStatusCode.ok,
+  header: {
+    key: 'Set-Cookie',
+    value: `token=${JSON.stringify(data)}; HttpOnly; Secure; SameSite=None; Path=/;`,
+  },
 });
